@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Dos</title>
+  <script type="module" src="./src/app.js"></script>
+  <link rel="stylesheet" href="./styles/style.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="./css/myMenuStyle.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+      <script type="module" src="./src/sound.js"></script>
+</head>
+
+
+
+<body>
+  <audio id="myAudio" src="./assets/Songs/backgroundSound.mp3"></audio>
+      <script type="module"> 
+            document.getElementById("myAudio").play(); 
+      </script>
+
+  <div id="renderScene">
+
+
+    <div id="contentModels">
+
+      <!-- BOTON VOLVER -->
+      <div class="backBtn" id="backBtn">
+        <div class="titleBack">RETURN</div> 
+      </div> 
+
+      <!-- LOGO DE INICIO -->
+      <img src="./assets/img/logo.png" class="logo2">
+
+      <!-- FRANJA -->
+      <div class="franja"></div> 
+
+      <!-- CIRCULO -->
+      <div class="circulo"></div> 
+
+      <!-- DERECHA -->
+      <div class="derecha"></div> 
+
+
+      
+      <!-- MODELO 1 -->
+      <div class="btnOptionModels m1 modelOne" data-size="modelOne">
+       <img src="./assets/img/modelo1.png" class="img1">
+      </div>
+
+      <!-- MODELO 2 -->
+      <div class="btnOptionModels m2 modelTwo" data-size="modelTwo">
+       <img src="./assets/img/modelo2.png" class="img2">
+      </div>
+
+      <!-- MODELO 3 -->
+      <div class="btnOptionModels m3 modelThree" data-size="modelThree">
+       <img src="./assets/img/modelo3.png" class="img3">
+      </div>
+
+      <!-- MODELO 4 -->
+      <div class="btnOptionModels m4 modelFour" data-size="modelFour">
+        <img src="./assets/img/modelo4.png" class="img4">
+      </div>
+
+    </div>
+
+
+    <div id="contentTexture">
+      
+      <!-- TEXTURA 1 -->
+      <div class="btnOptionTexture custom1 textureOne" >
+        <img src="./assets/img/ej1.jpg" class="tp1">
+      </div>
+
+      <!-- TEXTURA 2 -->
+      <div class="btnOptionTexture custom2 textureTwo" >
+        <img src="./assets/img/ej2.jpg" class="tp2">
+      </div>
+
+      <!-- TEXTURA 3 -->
+      <div class="btnOptionTexture custom3 textureThree" >
+        <img src="./assets/img/ej3.jpg" class="tp3">
+      </div>
+
+    </div>
+  
+
+  </div>
+
+
+ 
+
+
+
+
+  <script type="module">
+    import { main,changeModel,reset,changeTexture, changeTexture1, changeTexture2 } from './src/app.js';
+
+    const options = document.querySelectorAll('.btnOption'); 
+    const btnModelOne = document.querySelector('.modelOne');
+    const btnModelTwo = document.querySelector('.modelTwo');
+    const btnModelThree = document.querySelector('.modelThree');
+    const btnModelFour = document.querySelector('.modelFour');
+    const btnTexture = document.querySelector('.textureOne');
+    const btnTexture2 = document.querySelector('.textureTwo');
+    const btnTexture3 = document.querySelector('.textureThree');
+
+    options.forEach(optionSelected => {
+      optionSelected.onclick = function(){
+        toogleContent();
+        main();
+      }
+    });
+
+    const Modelos = document.querySelectorAll('.btnOptionModels');
+    /* let modelo; */
+
+    Modelos.forEach(ModelosSelected=>{
+      ModelosSelected.onclick=function(){
+        const botones = this.dataset.size;
+        changeModel(botones);
+      }
+    });
+
+   
+    btnTexture.onclick = function () {
+      changeTexture('texturas');
+    }
+
+    btnTexture2.onclick = function () {
+      changeTexture1('texturas');
+    }
+
+    btnTexture3.onclick = function () {
+      changeTexture2('texturas');
+    }
+
+
+
+    backBtn.onclick = function(){
+      toogleContent();
+      reset();
+    }
+
+    function toogleContent (){
+      location.href ="Menu.html";
+    }
+  </script>
+</body>
+
+</html>
